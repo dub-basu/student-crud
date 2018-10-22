@@ -1,11 +1,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="/static/css/styles.css">
-        <title> Hello </title>
+        <title> StudentApp | {% block title %}  {% endblock %} </title>
+        {% block extrahead %} {% endblock %}
     </head>
     <body>
-        <div id="test">
-            Init Phase
+        <div class="container">
+            {% block body %} {% endblock %}
         </div>
     </body>
 </html>
