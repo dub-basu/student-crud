@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS student (
+  roll_number INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  rank INTEGER
+);
