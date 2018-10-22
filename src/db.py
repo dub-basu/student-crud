@@ -1,5 +1,7 @@
 import sqlite3
 
+from utils import Student
+
 class DBHandler:
 
     def __init__(self, dbname):
@@ -21,6 +23,11 @@ class DBHandler:
         )
         self.cursor.execute(cmd)
         self.commit()
+
+    def get_all_students(self):
+        cmd = """SELECT * FROM student;"""
+        students = [Student(*row) for row in self.cursor.execute(cmd)]
+        return(students)
 
     def commit(self):
         self.connection.commit()
