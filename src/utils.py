@@ -1,13 +1,16 @@
 class Student:
-        
+    """ Corresponds to the Student entity. """
     def __init__(self, roll_number = None, name = None, rank = None ):
         self.roll_number = roll_number
         self.name = name
         self.rank = rank
 
 def merge_sort(students):
-
+    """ Return a list of Student type objects sorted according to `name` attribute.
+        Contains two inner utility functions: `merge` and `compare`.
+    """
     def merge(list1, list2):
+        """ Return a sorted list combining list1 and list2.  """
         count1, count2 = 0, 0
         len1 = len(list1)
         len2 = len(list2)
@@ -34,6 +37,7 @@ def merge_sort(students):
 
     
     def compare(stud1, stud2):
+        """ Return True if stud1.name is lexicographically smaller than stud2.name.  """
         if(stud1.name.lower() < stud2.name.lower()):
             return True
         else:

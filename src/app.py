@@ -9,10 +9,12 @@ DBNAME = 'db.sqlite3'
 
 @app.route('/')
 def home():
+    """ View home page. """
     return render_template('home.html')
 
 @app.route('/view')
 def view_all():
+    """ View list of students. """
     db = DBHandler(DBNAME)
     students = db.get_all_students()
     db.close_connection()
@@ -21,6 +23,7 @@ def view_all():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_student():
+    """ View add student form. """
     form = StudentForm(request.form)
     
     if request.method == 'POST' and form.validate():
