@@ -9,7 +9,7 @@ DBNAME = 'db.sqlite3'
 
 @app.route('/')
 def home():
-    return render_template('base.html')
+    return render_template('home.html')
 
 @app.route('/view')
 def view_all():
@@ -38,4 +38,3 @@ def add_student():
 
     elif request.method == 'GET':
         return render_template('add.html', form=form)
-        
