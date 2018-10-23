@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} View All {% endblock %}
+
+{% block body %}
+
+    <table class="student-table">
+        <tr>
+            <th> Roll Number </th>
+            <th> Name </th>
+            <th> Rank </th>
+        </tr>
+
+        {% for student in student_list %}
+        <tr class="row">
+            <td> {{ student.roll_number }} <td>
+            <td> {{ student.name }} </td>
+            <td> {{ student.rank }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}
