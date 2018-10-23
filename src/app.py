@@ -1,7 +1,7 @@
 from flask import *
 
 from forms import StudentForm
-from utils import Student
+from utils import Student, merge_sort
 from db import DBHandler
 
 app = Flask(__name__)
@@ -15,7 +15,8 @@ def home():
 def view_all():
     db = DBHandler(DBNAME)
     students = db.get_all_students()
-    # TODO: merge_sort(student_list)
+    db.close_connection()
+    students = merge_sort(students)
     return render_template('view_all.html', student_list = students)
 
 @app.route('/add', methods=['GET', 'POST'])
