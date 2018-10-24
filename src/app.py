@@ -1,3 +1,4 @@
+import sqlite3
 from flask import *
 
 from forms import StudentForm
@@ -5,6 +6,7 @@ from utils import Student, merge_sort
 from db import DBHandler
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'my_secret_key'
 DBNAME = 'db.sqlite3'
 
 @app.route('/')
@@ -25,7 +27,7 @@ def view_all():
 def add_student():
     """ View add student form. """
     form = StudentForm(request.form)
-    
+
     if request.method == 'POST' and form.validate():
         
         student = Student(
@@ -34,11 +36,17 @@ def add_student():
             form.rank.data
         )
 
-        db = DBHandler(DBNAME)
-        db.add_student(student)
-        db.close_connection()
-
+        try:
+            # Try to add student record to database
+            db = DBHandler(DBNAME)
+            db.add_student(student)
+            db.close_connection()
+        except sqlite3.IntegrityError as e:
+            # Primary key constraint: Roll number already exists
+            flash('Roll number already exists.')
+            return render_template('add.html', form=form)
+        
         return redirect(url_for('view_all'))
 
-    elif request.method == 'GET':
-        return render_template('add.html', form=form)
+    return render_template('add.html', form=form)
+    

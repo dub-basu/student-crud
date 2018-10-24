@@ -4,17 +4,18 @@
 {% block title %} Add Student {% endblock %}
 
 {% block body %}
+    {% include "messages.html" %}
     {% from "_formhelpers.html" import render_field %}
-    <div class="student-form">
-        <form method=post>
-        <dl>
-            {{ render_field(form.roll_number) }}
-            {{ render_field(form.name) }}
-            {{ render_field(form.rank) }}
-        </dl>
-        <p>
-            <div class="btn-container">
-        <input class="add-btn btn waves-effect" type=submit value=Add></div>
-        </form>
-    </div>
+        <div class="student-form">
+            <form method=post>
+            <dl>
+                {{ render_field(form.roll_number) }}
+                {{ render_field(form.name) }}
+                {{ render_field(form.rank) }}
+            </dl>
+            <p>
+                <div class="btn-container">
+            <input class="add-btn btn waves-effect" type=submit value=Add></div>
+            </form>
+        </div>
 {% endblock %}
