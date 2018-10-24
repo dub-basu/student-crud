@@ -1,11 +1,18 @@
 <html>
     <head>
+        <link rel="stylesheet" href="/static/css/materialize.min.css">
         <link rel="stylesheet" href="/static/css/styles.css">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <title> StudentApp | {% block title %}  {% endblock %} </title>
         {% block extrahead %} {% endblock %}
     </head>
     <body>
-        <div class="container">
+        {% block extrabody %}
+        {% endblock %}
+        <div class="flex-container">
             {% block body %} {% endblock %}
         </div>
     </body>

@@ -1,23 +1,25 @@
 {% extends "base.html" %}
+{% include "back-icon.html" %}
 
 {% block title %} View All {% endblock %}
 
 {% block body %}
+    <div class="view-table">
+        <table class="student-table stripped border highlight centered">
+            <tr>
+                <th> ROLL NUMBER </th>
+                <th> NAME </th>
+                <th> RANK </th>
+            </tr>
 
-    <table class="student-table">
-        <tr>
-            <th> Roll Number </th>
-            <th> Name </th>
-            <th> Rank </th>
-        </tr>
-
-        {% for student in student_list %}
-        <tr class="row">
-            <td> {{ student.roll_number }} </td>
-            <td> {{ student.name }} </td>
-            <td> {{ student.rank }} </td>
-        </tr>
-        {% endfor %}
-    </table>
+            {% for student in student_list %}
+            <tr class="row">
+                <td class="row-item"> {{ student.roll_number }} </td>
+                <td class="row-item"> {{ student.name }} </td>
+                <td class="row-item"> {{ student.rank }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
     
 {% endblock %}

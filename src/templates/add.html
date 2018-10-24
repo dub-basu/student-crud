@@ -1,15 +1,20 @@
 {% extends "base.html" %}
+{% include "back-icon.html" %}
 
 {% block title %} Add Student {% endblock %}
 
 {% block body %}
     {% from "_formhelpers.html" import render_field %}
-    <form method=post class="student-form">
-    <dl>
-        {{ render_field(form.roll_number) }}
-        {{ render_field(form.name) }}
-        {{ render_field(form.rank) }}
-    </dl>
-    <p><input type=submit value=Add>
-    </form>
+    <div class="student-form">
+        <form method=post>
+        <dl>
+            {{ render_field(form.roll_number) }}
+            {{ render_field(form.name) }}
+            {{ render_field(form.rank) }}
+        </dl>
+        <p>
+            <div class="btn-container">
+        <input class="add-btn btn waves-effect" type=submit value=Add></div>
+        </form>
+    </div>
 {% endblock %}
